@@ -1,0 +1,5 @@
+comtypes==1.4.13
+PyQt6==6.10.1
+pyqt6_sip==13.10.2
+python_osc==1.9.3
+pywin32==311
