@@ -56,9 +56,9 @@ class OSCInputWindows(QMainWindow, Ui_MainWindow):
         self.last_send_time = 0
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.check_battery)  # 绑定函数
-        self.timer.start(5000) #发送间隔ms
+        self.timer.start(5000)  # 发送间隔ms
 
-        self.check_battery() #先运行一次
+        self.check_battery()  # 先运行一次
 
     def send_message(self, msg):
         if msg == "":
@@ -73,7 +73,7 @@ class OSCInputWindows(QMainWindow, Ui_MainWindow):
                 self.OSCClient = SimpleUDPClient(self.ip, self.port)
                 QMessageBox.information(self, "错误", "无法连接到VRChat,请再试一次")
 
-    def input_mouse_enter(self,a):
+    def input_mouse_enter(self, a):
         if self.cb_autoOpenKeyboard.isChecked():
             toggle_tabtip()
         a.accept()
@@ -98,15 +98,18 @@ class OSCInputWindows(QMainWindow, Ui_MainWindow):
 
     def check_battery(self):
         changeing, battery = get_battery_status()
-        self.cb_sendBettaryState.setText(f"自动发送电量状态 [{battery}%,{'充电中'if changeing == 1 else '未充电'}]")
-        if time.time() - self.last_send_time < 15:  # 如果上次发送时间不超过15秒
+        self.cb_sendBettaryState.setText(
+            f"自动发送电量状态 [{battery}%,{'充电中' if changeing == 1 else '未充电'}]"
+        )
+        if time.time() - self.last_send_time < 15 :  # 如果上次发送时间不超过15秒
             return
-        msg = f"SteamDeck电量:{battery}%"
+        if not self.cb_sendBettaryState.isChecked():
+            return
+        
+        msg = f"SteamDeck 电量:{battery}%"
         if changeing:
             msg = msg + " 充电中"
         self.send_message(msg)
-
-
 
 
 if __name__ == "__main__":
