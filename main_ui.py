@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'd:\Code\Python\OSCinput\main.ui'
+# Form implementation generated from reading ui file 'd:\User\Desktop\GIT\VRChat_OSCKeyboard\main.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -12,9 +12,9 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(500, 150)
-        MainWindow.setMinimumSize(QtCore.QSize(500, 150))
-        MainWindow.setMaximumSize(QtCore.QSize(500, 150))
+        MainWindow.resize(500, 160)
+        MainWindow.setMinimumSize(QtCore.QSize(500, 160))
+        MainWindow.setMaximumSize(QtCore.QSize(500, 160))
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tx_input = QtWidgets.QLineEdit(parent=self.centralwidget)
@@ -25,11 +25,24 @@ class Ui_MainWindow(object):
         self.tx_input.setText("")
         self.tx_input.setObjectName("tx_input")
         self.bt_open = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.bt_open.setGeometry(QtCore.QRect(10, 40, 241, 101))
+        self.bt_open.setGeometry(QtCore.QRect(260, 50, 111, 101))
         self.bt_open.setObjectName("bt_open")
         self.bt_close = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.bt_close.setGeometry(QtCore.QRect(250, 40, 241, 101))
+        self.bt_close.setGeometry(QtCore.QRect(370, 50, 121, 101))
         self.bt_close.setObjectName("bt_close")
+        self.gp_setting = QtWidgets.QGroupBox(parent=self.centralwidget)
+        self.gp_setting.setGeometry(QtCore.QRect(10, 50, 241, 101))
+        self.gp_setting.setObjectName("gp_setting")
+        self.cb_autoOpenKeyboard = QtWidgets.QCheckBox(parent=self.gp_setting)
+        self.cb_autoOpenKeyboard.setEnabled(True)
+        self.cb_autoOpenKeyboard.setGeometry(QtCore.QRect(10, 20, 221, 31))
+        self.cb_autoOpenKeyboard.setChecked(True)
+        self.cb_autoOpenKeyboard.setObjectName("cb_autoOpenKeyboard")
+        self.cb_sendBettaryState = QtWidgets.QCheckBox(parent=self.gp_setting)
+        self.cb_sendBettaryState.setEnabled(True)
+        self.cb_sendBettaryState.setGeometry(QtCore.QRect(10, 60, 221, 31))
+        self.cb_sendBettaryState.setChecked(True)
+        self.cb_sendBettaryState.setObjectName("cb_sendBettaryState")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -40,3 +53,6 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "OSC输入框"))
         self.bt_open.setText(_translate("MainWindow", "打开键盘"))
         self.bt_close.setText(_translate("MainWindow", "发送"))
+        self.gp_setting.setTitle(_translate("MainWindow", "设置"))
+        self.cb_autoOpenKeyboard.setText(_translate("MainWindow", "自动打开虚拟键盘"))
+        self.cb_sendBettaryState.setText(_translate("MainWindow", "自动发送电量状态"))
