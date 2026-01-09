@@ -60,12 +60,12 @@ class OSCInputWindows(QMainWindow, Ui_MainWindow):
 
         self.check_battery()  # 先运行一次
 
-    def send_message(self, msg):
+    def send_message(self, msg,SFX=True):
         if msg == "":
             pass
         else:
             try:
-                self.OSCClient.send_message("/chatbox/input", [msg, True, True])
+                self.OSCClient.send_message("/chatbox/input", [msg, True, SFX])
                 self.OSCClient.send_message("/chatbox/typing", False)
                 print(f"OSC send:{msg}")
                 self.last_send_time = time.time()
@@ -109,7 +109,7 @@ class OSCInputWindows(QMainWindow, Ui_MainWindow):
         msg = f"SteamDeck 电量:{battery}%"
         if changeing:
             msg = msg + " 充电中"
-        self.send_message(msg)
+        self.send_message(msg,False)
 
 
 if __name__ == "__main__":
